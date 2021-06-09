@@ -7,12 +7,19 @@ const displayCard=(e)=>{
                 images[i].style.display="grid";
         }
     }
+    setTimeout(hiddenCard, 2000);
 }
 
+const hiddenCard=(e)=>{
+    for(let i=0; i<images.length; i++){
+                images[i].style.display="none";
+    }
+}
 
 const startGame=()=>{
-    hiddenImages.forEach(hiddenImage=>{hiddenImage.addEventListener("click", displayCard)});
+    hiddenImages.forEach(hiddenImage=>{hiddenImage.addEventListener("click", displayCard)});  
 }
 
 startGame()
+
 
