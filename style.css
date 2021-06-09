@@ -1,0 +1,114 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #333;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 50px;
+    width: 900px;
+    height: 900px;
+    background: radial-gradient(circle, rgb(43, 44, 46) 0%, rgb(25, 25, 25) 93%);
+    border-radius: 8px;
+    box-shadow: 5px 5px 10px black;
+    color: #fff;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 60px;
+    font-weight: lighter;
+    text-align: center;
+}
+
+p.click {
+    padding-bottom: 30px;
+}
+
+.cards {
+    display: grid;
+    width: 90%;
+    justify-content: space-between;
+    margin-left: auto;
+    margin-right: auto;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px 40px;
+    grid-auto-rows: minmax(100px, auto);
+}
+
+.card {
+    display: grid;
+    justify-self: center;
+    width: 150px;
+    height: 210px;
+}
+
+.hidden {
+    border: 2px solid #fff;
+    border-radius: 5px;
+    /* width: 150px;
+    height: 210px; */
+    width: 80%;
+    height: 90%;
+    display: grid;
+    justify-self: center;
+    align-self: center;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    justify-self: center;
+    align-self: center;
+    /* border: 2px solid #fff;
+    border-radius: 5px; */
+}
+
+.buldog {
+    width: 116px;
+    height: 185px;
+}
+
+.wrapper2 {
+    position: absolute;
+    right: 3%;
+    top: 4%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
+    width: 20%;
+    background: radial-gradient(circle, rgb(43, 44, 46) 0%, rgb(25, 25, 25) 93%);
+    border-radius: 8px;
+    box-shadow: 5px 5px 10px black;
+    color: #fff;
+}
+
+p.moves {
+    padding-bottom: 30px;
+}
+
+p {
+    font-weight: 700;
+}
+
+span {
+    font-weight: 300;
+}
