@@ -1,25 +1,15 @@
 const images= document.querySelectorAll("img");
-const hiddenImages=document.querySelectorAll(".hidden");
+const cards=document.querySelectorAll(".card");
 
-const displayCard=(e)=>{
-    for(let i=0; i<images.length; i++){
-        if(images[i].id === e.target.id){
-                images[i].style.display="grid";
-        }
-    }
-    setTimeout(hiddenCard, 2000);
+function displayCard(){
+    console.log(this.children)
+    this.children[0].classList.toggle("visible");
 }
 
-const hiddenCard=(e)=>{
-    for(let i=0; i<images.length; i++){
-                images[i].style.display="none";
-    }
-}
 
 const startGame=()=>{
-    hiddenImages.forEach(hiddenImage=>{hiddenImage.addEventListener("click", displayCard)});  
+    cards.forEach(card=>{card.addEventListener("click", displayCard)});  
 }
 
 startGame()
-
 
