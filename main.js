@@ -103,11 +103,10 @@ const checkSeconds = () => {
     }
 }
 
-
-window.onload = function () {
+window.addEventListener("load",function () {
     setTimeout(flashCards, 400);
     startTime();
-}
+} )
 
 
 cards.forEach(card => {
