@@ -11,11 +11,20 @@ let seconds = 0;
 let minutes = 0;
 // let timesArr=[];
 
+let countMoves=0;
+
 
 function displayCard() {
     this.classList.add("disable");
     this.children[0].classList.toggle("visible");
-    openCard(this)
+    openCard(this);
+    countMoves++;
+    counterMoves();
+}
+
+
+const counterMoves=()=>{
+    moves.textContent=` ${countMoves}`;
 }
 
 
@@ -72,11 +81,13 @@ const enable = () => {
 
 const flashCards = () => {
     cards.forEach(card => {
-        card.children[0].classList.add("visible")
+        card.children[0].classList.add("visible");
+        card.children[0].classList.add("disable");
     });
     setTimeout(function () {
         cards.forEach(card => {
-            card.children[0].classList.remove("visible")
+            card.children[0].classList.remove("visible");
+            card.children[0].classList.remove("disable");
         })
     }, 1000)
 }
