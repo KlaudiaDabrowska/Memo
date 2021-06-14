@@ -79,6 +79,11 @@ img {
     visibility: visible;
 }
 
+.match {
+    animation: increaseBorder .2s;
+    cursor: default;
+}
+
 .wrapper2 {
     position: absolute;
     right: 3%;
@@ -105,4 +110,26 @@ p {
 
 span {
     font-weight: 300;
+}
+
+@keyframes increaseBorder {
+    0% {
+        border: 10px solid #fff;
+    }
+
+    20% {
+        border: 20px solid #fff;
+    }
+
+    50% {
+        border: 30px solid #fff;
+    }
+
+    80% {
+        border: 20px solid #fff;
+    }
+
+    100% {
+        border: 10px solid #fff;
+    }
 }
