@@ -5,6 +5,7 @@ let openedCards=[];
 let matchedCards=[];
 
 function displayCard(){
+    this.classList.add("disable");
     this.children[0].classList.toggle("visible");
     openCard(this)
 }
@@ -23,21 +24,23 @@ function openCard(card){
     
 
 const matched=()=>{
+        disable();
         openedCards[0].children[0].classList.add("match");
         openedCards[1].children[0].classList.add("match");
         openedCards.forEach(openedCard=>{matchedCards.push(openedCard)});
         matchedCards.forEach(matchedCard=>{matchedCard.classList.add("disable")});
         openedCards=[];
+        setTimeout(enable, 250);
 }
 
 
 const unmatched=()=>{
     disable();
         setTimeout(function(){
-        openedCards[0].children[0].classList.toggle("visible");
-        openedCards[1].children[0].classList.toggle("visible");
-        enable();
+        openedCards[0].children[0].classList.remove("visible");
+        openedCards[1].children[0].classList.remove("visible");
         openedCards=[];
+        enable();
     }, 500)
 }
 
