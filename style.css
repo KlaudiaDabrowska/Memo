@@ -84,6 +84,10 @@ img {
     cursor: default;
 }
 
+.disable {
+    pointer-events: none;
+}
+
 .wrapper2 {
     position: absolute;
     right: 3%;

@@ -2,10 +2,11 @@ const images= document.querySelectorAll("img");
 const cards=document.querySelectorAll(".card");
 
 let openedCards=[];
+let matchedCards=[];
 
 function displayCard(){
     this.children[0].classList.toggle("visible");
-   openCard(this)
+    openCard(this)
 }
 
 function openCard(card){
@@ -21,22 +22,33 @@ function openCard(card){
 }
     
 
-console.log(openedCards)
 const matched=()=>{
         openedCards[0].children[0].classList.add("match");
         openedCards[1].children[0].classList.add("match");
-        openedCards=[]
+        openedCards.forEach(openedCard=>{matchedCards.push(openedCard)});
+        matchedCards.forEach(matchedCard=>{matchedCard.classList.add("disable")});
+        openedCards=[];
 }
 
 
 const unmatched=()=>{
-    setTimeout(function(){
+    disable();
+        setTimeout(function(){
         openedCards[0].children[0].classList.toggle("visible");
         openedCards[1].children[0].classList.toggle("visible");
-        openedCards=[]
+        enable();
+        openedCards=[];
     }, 500)
 }
 
+const disable=()=>{
+    cards.forEach(card=>card.classList.add('disable'));
+}
+
+const enable=()=>{
+    cards.forEach(card=>card.classList.remove('disable'));
+    matchedCards.forEach(matchedCard=>{matchedCard.classList.add("disable")});
+}
 
 const startGame=()=>{
     cards.forEach(card=>{card.addEventListener("click", displayCard)});  
