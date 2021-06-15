@@ -9,28 +9,22 @@ let matchedCards = [];
 let countTime;
 let seconds = 0;
 let minutes = 0;
-// let timesArr=[];
 
-let countMoves=0;
+
+let countMoves = 0;
 
 
 function displayCard() {
     this.classList.add("disable");
     this.children[0].classList.toggle("visible");
     openCard(this);
-    countMoves++;
-    counterMoves();
-}
-
-
-const counterMoves=()=>{
-    moves.textContent=` ${countMoves}`;
 }
 
 
 function openCard(card) {
     openedCards.push(card);
     if (openedCards.length === 2) {
+        counterMoves();
         if (openedCards[0].className === openedCards[1].className) {
             matched();
         } else {
@@ -93,8 +87,14 @@ const flashCards = () => {
 }
 
 
+const counterMoves = () => {
+    countMoves++;
+    moves.textContent = ` ${countMoves}`;
+}
+
+
 const startTime = () => {
-    // clearInterval(countTime);
+    clearInterval(countTime);
     countTime = setInterval(() => {
         seconds++;
         if (seconds === 60) {
@@ -114,11 +114,14 @@ const checkSeconds = () => {
     }
 }
 
-window.addEventListener("load",function () {
+window.addEventListener("load", function () {
     setTimeout(flashCards, 400);
-    startTime();
-} )
+})
 
+
+cards.forEach(card => {
+    card.addEventListener("click", startTime)
+});
 
 cards.forEach(card => {
     card.addEventListener("click", displayCard)
