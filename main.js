@@ -3,6 +3,7 @@ const cards = document.querySelectorAll(".card");
 const moves = document.querySelector(".move");
 const time = document.querySelector(".time");
 const btnStart = document.querySelector(".click");
+const btnRestart=document.querySelector(".restart");
 
 let openedCards = [];
 let matchedCards = [];
@@ -114,11 +115,26 @@ const checkSeconds = () => {
     }
 }
 
-btnStart.addEventListener("click", function () {
+const restartGame=()=>{
     setTimeout(flashCards, 400);
-    startTime();
+    countMoves=0;
+    moves.textContent = ` ${countMoves}`;
+    seconds=0;
+    minutes=0;
+    clearInterval(countTime);
+    checkSeconds();
+    setTimeout(startTime, 400);
+}
+
+const startGame=()=>{
+    setTimeout(flashCards, 400);
+    setTimeout(startTime, 400);
     btnStart.classList.add("disable");
-})
+}
+
+btnRestart.addEventListener("click", restartGame)
+
+btnStart.addEventListener("click",startGame);
 
 cards.forEach(card => {
     card.addEventListener("click", displayCard)
