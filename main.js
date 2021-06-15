@@ -2,6 +2,7 @@ const images = document.querySelectorAll("img");
 const cards = document.querySelectorAll(".card");
 const moves = document.querySelector(".move");
 const time = document.querySelector(".time");
+const btnStart = document.querySelector(".click");
 
 let openedCards = [];
 let matchedCards = [];
@@ -105,7 +106,6 @@ const startTime = () => {
     }, 1000);
 }
 
-
 const checkSeconds = () => {
     if (seconds < 10) {
         time.textContent = `${minutes}:0${seconds}`
@@ -114,14 +114,11 @@ const checkSeconds = () => {
     }
 }
 
-window.addEventListener("load", function () {
+btnStart.addEventListener("click", function () {
     setTimeout(flashCards, 400);
+    startTime();
+    btnStart.classList.add("disable");
 })
-
-
-cards.forEach(card => {
-    card.addEventListener("click", startTime)
-});
 
 cards.forEach(card => {
     card.addEventListener("click", displayCard)
