@@ -2,7 +2,11 @@ const images = document.querySelectorAll("img");
 const cards = document.querySelectorAll(".card");
 const moves = document.querySelector(".move");
 const time = document.querySelector(".time");
-const btnRestart=document.querySelector(".restart");
+const btnRestart = document.querySelector(".restart");
+const modal = document.querySelector(".modal");
+const closeBtn = document.querySelector(".close");
+const timeGame = document.querySelector(".time-game");
+const movesGame = document.querySelector(".moves-game");
 
 let openedCards = [];
 let matchedCards = [];
@@ -24,7 +28,6 @@ function displayCard() {
 
 function openCard(card) {
     openedCards.push(card);
-    console.log(openedCards)
     if (openedCards.length === 2) {
         counterMoves();
         if (openedCards[0].className === openedCards[1].className) {
@@ -48,8 +51,38 @@ const matched = () => {
     });
     openedCards = [];
     setTimeout(enable, 250);
+    if (matchedCards.length === 12) {
+        endGame();
+    }
 }
 
+const stopTime = () => {
+    timeGame.textContent = `${time.textContent}`;
+    resetTime();
+}
+
+
+const resetTime = () => {
+    clearInterval(countTime);
+    minutes = 0;
+    seconds = 0;
+    checkSeconds();
+}
+
+const stopMoves = () => {
+    movesGame.textContent = `${moves.textContent}`
+    resetMoves();
+}
+
+const resetMoves = () => {
+    moves.textContent = 0;
+}
+
+const endGame = () => {
+    modal.style.display = "flex";
+    stopTime();
+    stopMoves();
+}
 
 const unmatched = () => {
     disable();
@@ -116,29 +149,39 @@ const checkSeconds = () => {
     }
 }
 
-const startGame=()=>{
-    cards.forEach(card => card.classList.add('disable'));    
-    matchedCards=[];
+const startGame = () => {
+    cards.forEach(card => card.classList.add('disable'));
+    matchedCards = [];
     setTimeout(flashCards, 400);
-    countMoves=0;
+    countMoves = 0;
     moves.textContent = ` ${countMoves}`;
-    seconds=0;
-    minutes=0;
+    seconds = 0;
+    minutes = 0;
     checkSeconds();
     clearInterval(countTime);
-    setTimeout(enable,1500);
+    setTimeout(enable, 1500);
 }
 
-btnRestart.addEventListener("click", ()=>{
-    startGame(); 
+
+btnRestart.addEventListener("click", () => {
+    cards.forEach(card => card.children[0].classList.remove("visible", "match"))
+    startGame();
 })
 
-window.addEventListener("load",()=> {
+window.addEventListener("load", () => {
     startGame();
-} )
+})
 
 cards.forEach(card => {
     card.addEventListener("click", displayCard)
 });
 
-//na jakakolwiek karte i wtedy startTime
+const closeModal = () => {
+    modal.style.display = "none";
+    cards.forEach(card => {
+        card.classList.toggle("visible")
+    })
+    startGame();
+}
+
+closeBtn.addEventListener("click", closeModal)
