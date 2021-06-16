@@ -2,7 +2,6 @@ const images = document.querySelectorAll("img");
 const cards = document.querySelectorAll(".card");
 const moves = document.querySelector(".move");
 const time = document.querySelector(".time");
-const btnStart = document.querySelector(".click");
 const btnRestart=document.querySelector(".restart");
 
 let openedCards = [];
@@ -25,6 +24,7 @@ function displayCard() {
 
 function openCard(card) {
     openedCards.push(card);
+    console.log(openedCards)
     if (openedCards.length === 2) {
         counterMoves();
         if (openedCards[0].className === openedCards[1].className) {
@@ -39,7 +39,7 @@ function openCard(card) {
 const matched = () => {
     disable();
     openedCards[0].children[0].classList.add("match");
-    openedCards[1].children[0].classList.add("match");
+    openedCards[1].children[0].classList.add("visible", "match");
     openedCards.forEach(openedCard => {
         matchedCards.push(openedCard)
     });
@@ -92,6 +92,7 @@ const flashCards = () => {
 const counterMoves = () => {
     countMoves++;
     moves.textContent = ` ${countMoves}`;
+    startTime();
 }
 
 
@@ -115,27 +116,29 @@ const checkSeconds = () => {
     }
 }
 
-const restartGame=()=>{
+const startGame=()=>{
+    cards.forEach(card => card.classList.add('disable'));    
+    matchedCards=[];
     setTimeout(flashCards, 400);
     countMoves=0;
     moves.textContent = ` ${countMoves}`;
     seconds=0;
     minutes=0;
-    clearInterval(countTime);
     checkSeconds();
-    setTimeout(startTime, 400);
+    clearInterval(countTime);
+    setTimeout(enable,1500);
 }
 
-const startGame=()=>{
-    setTimeout(flashCards, 400);
-    setTimeout(startTime, 400);
-    btnStart.classList.add("disable");
-}
+btnRestart.addEventListener("click", ()=>{
+    startGame(); 
+})
 
-btnRestart.addEventListener("click", restartGame)
-
-btnStart.addEventListener("click",startGame);
+window.addEventListener("load",()=> {
+    startGame();
+} )
 
 cards.forEach(card => {
     card.addEventListener("click", displayCard)
 });
+
+//na jakakolwiek karte i wtedy startTime
