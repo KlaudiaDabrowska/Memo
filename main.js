@@ -181,6 +181,7 @@ const closeModal = () => {
     cards.forEach(card => {
         card.classList.toggle("visible")
     })
+    cards.forEach(card => card.children[0].classList.remove("visible", "match"));
     startGame();
 }
 
