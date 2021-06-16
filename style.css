@@ -156,12 +156,8 @@ span {
     border-radius: 8px;
     box-shadow: 5px 5px 10px black;
     color: #fff;
-    animation: show-modal .4s;
+    animation: show-modal .6s;
 }
-
-/* .modal-animation {
-    animation: show-modal .5s;
-} */
 
 button.close {
     position: absolute;
@@ -170,7 +166,7 @@ button.close {
     background-color: transparent;
     border: none;
     font-size: 20px;
-
+    cursor: pointer;
 }
 
 p.summary {
