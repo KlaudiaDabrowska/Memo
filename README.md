@@ -13,3 +13,4 @@ Project is created with:
 Live project: 
 https://klaudiadabrowska.github.io/Memo/
  Added from github
+Added from VS code
