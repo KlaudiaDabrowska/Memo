@@ -12,3 +12,4 @@ Project is created with:
 ## Setup
 Live project: 
 https://klaudiadabrowska.github.io/Memo/
+ Added from github
