@@ -10,6 +10,8 @@ const movesGame = document.querySelector(".moves-game");
 
 let openedCards = [];
 let matchedCards = [];
+let imgArray=[...images];
+console.log(imgArray)
 
 let countTime;
 let seconds = 0;
@@ -17,6 +19,29 @@ let minutes = 0;
 
 
 let countMoves = 0;
+
+const shuffleFunction=(array)=>{
+    let currentIndex = array.length;
+    let temporaryValue;
+    let randomIndex;
+
+    if (currentIndex !==0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex]; 
+    array[randomIndex] = temporaryValue;
+    }
+    return array;
+}
+
+
+const shuffleImage=()=>{
+    let shuffledImages = shuffleFunction(imgArray);
+    for(i=0; i<shuffledImages.length; i++) {
+        cards[i].appendChild(shuffledImages[i]);
+    }
+}
 
 
 function displayCard() {
@@ -26,11 +51,11 @@ function displayCard() {
 }
 
 
-function openCard(card) {
+const openCard=(card)=> {
     openedCards.push(card);
     if (openedCards.length === 2) {
         counterMoves();
-        if (openedCards[0].className === openedCards[1].className) {
+        if (openedCards[0].children[0].id === openedCards[1].children[0].id) {
             matched();
         } else {
             unmatched();
@@ -152,6 +177,7 @@ const checkSeconds = () => {
 const startGame = () => {
     cards.forEach(card => card.classList.add('disable'));
     matchedCards = [];
+    shuffleImage();
     setTimeout(flashCards, 400);
     countMoves = 0;
     moves.textContent = ` ${countMoves}`;
