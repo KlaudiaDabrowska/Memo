@@ -11,7 +11,7 @@ const movesGame = document.querySelector(".moves-game");
 let openedCards = [];
 let matchedCards = [];
 let imgArray=[...images];
-console.log(imgArray)
+
 
 let countTime;
 let seconds = 0;
@@ -26,18 +26,18 @@ const shuffleFunction=(array)=>{
     let randomIndex;
 
     if (currentIndex !==0) {
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex -= 1;
-    temporaryValue = array[currentIndex];
-    array[currentIndex] = array[randomIndex]; 
-    array[randomIndex] = temporaryValue;
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex]; 
+        array[randomIndex] = temporaryValue;
     }
     return array;
 }
 
 
 const shuffleImage=()=>{
-    let shuffledImages = shuffleFunction(imgArray);
+    const shuffledImages = shuffleFunction(imgArray);
     for(i=0; i<shuffledImages.length; i++) {
         cards[i].appendChild(shuffledImages[i]);
     }
