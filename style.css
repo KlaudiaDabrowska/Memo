@@ -219,8 +219,6 @@ p.summary {
 }
 
 
-
-
 @media (max-width:1023px) and (min-width:768px) {
     .wrapper {
         width: 700px;
@@ -280,11 +278,13 @@ p.summary {
 
     .cards {
         width: 100%;
+        gap: 8px 20px;
+        justify-content: center;
     }
 
     .card {
-        width: 45px;
-        height: 80px;
+        width: 65px;
+        height: 110px;
     }
 
     .wrapper2 {
@@ -300,5 +300,4 @@ p.summary {
     p.summary {
         margin-top: 30px;
     }
-
 }
