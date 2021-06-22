@@ -246,7 +246,7 @@ p.summary {
 
 }
 
-@media (max-width:767px) and (min-width:320px) {
+@media (max-width:767px) and (min-width:321px) {
     .wrapper {
         width: 340px;
         height: 500px;
@@ -299,5 +299,63 @@ p.summary {
 
     p.summary {
         margin-top: 30px;
+    }
+}
+
+@media (max-width:320px) {
+    .wrapper {
+        width: 310px;
+        height: 420px;
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 20px;
+        padding-right: 8px;
+    }
+
+    p.click {
+        font-size: 10px;
+        padding-bottom: 15px;
+    }
+
+    p,
+    span {
+        font-size: 10px;
+    }
+
+    p.moves {
+        padding-bottom: 10px;
+    }
+
+    button.restart {
+        padding-top: 5px;
+        font-size: 10px;
+    }
+
+    .cards {
+        width: 100%;
+        gap: 8px 20px;
+        justify-content: center;
+    }
+
+    .card {
+        width: 60px;
+        height: 100px;
+    }
+
+    .wrapper2 {
+        right: 4%;
+        top: 0%;
+        width: 150px;
+    }
+
+    .modal {
+        width: 280px;
+        height: 100px;
+    }
+
+    p.summary {
+        margin-top: 20px;
     }
 }
