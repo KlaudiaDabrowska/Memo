@@ -1,7 +1,7 @@
 # Memory Game
 
 ## General info
-This project is a simple memory game. Project is still being developed.
+This project is a simple memory game.
 
 ## Technologies
 Project is created with:
